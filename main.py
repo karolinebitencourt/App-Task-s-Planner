@@ -68,12 +68,13 @@ def deletar_tarefa(frame_tarefa):
 
 
 def alternar_sublinhado(label):
-    fonte_atual=label.cget('font')
-    if 'overstrike' in fonte_atual:
-        nova_fonte=fonte_atual.replace('overstrike','')
+    fonte_atual = label.cget("font")
+    fonte_sublinhado = font.Font(font = fonte_atual)
+    if fonte_sublinhado.cget("overstrike"):
+        fonte_sublinhado.configure(overstrike=False)
     else:
-        nova_fonte=fonte_atual + 'overstrike' 
-        label.config(font=nova_fonte)
+        fonte_sublinhado.configure(overstrike=True)
+    label.config(font= fonte_sublinhado)
 
 def ao_clicar_entrada(event):
     if entrada_tarefa.get() == "Escreva sua tarefa aqui":
@@ -104,7 +105,6 @@ botao_adicionar = tk.Button(frame, text="Adicionar Tarefa", command=adicionar_ta
 
 botao_adicionar.pack(side=tk.LEFT, padx=10)
 
-#criar uma frame para lista com rolagem
 frame_lista_tarefas = tk.Frame(janela, bg="white")
 frame_lista_tarefas.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 canvas = tk.Canvas(frame_lista_tarefas, bg="white")
