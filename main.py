@@ -66,7 +66,7 @@ def deletar_tarefa(frame_tarefa):
     canvas_interior.update_idletasks()
     canvas.config(scrollregion=canvas.bbox('all'))
 
-z
+
 def alternar_sublinhado(label):
     fonte_atual=label.cget('font')
     if 'overstrike' in fonte_atual:
